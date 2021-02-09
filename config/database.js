@@ -1,11 +1,12 @@
 const mongoose = require("mongoose");
+require('dotenv').config()
 
-const MONGOURI = "mongodb://localhost:27017/homitag-shubham"; //running on localhost
+const MONGOURI = process.env.MONGOURI; //running on localhost
 
 const startMongoServer = async () => {
     try {
             await mongoose.connect(MONGOURI, {
-                useNewUrlParser: true //this will parse the mongoDB connection string
+                useNewUrlParser: true,useUnifiedTopology: true //this will parse the mongoDB connection string
             });
             console.log("connected to mongo db");
              } 
