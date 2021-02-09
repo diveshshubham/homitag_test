@@ -1,0 +1,369 @@
+////////////////////////////////////////////////adding genre////////////////////////////////////////////
+
+Endpoint :  http://localhost:8082/add_genre
+method: post
+Req:
+    {
+        "genre_name":"Fiction",
+        "genre_description":"Fiction has three categories that are, realistic, non-realistic, and semi-fiction. Usually, fiction work is not real and therefore, authors can use complex figurative language to touch readers’ imaginations. Unlike poetry, it is more structured, follows proper grammatical pattern, and correct mechanics. A fictional work may incorporate fantastical and imaginary ideas from everyday life. It comprises some important elements such as plot, exposition, foreshadowing, rising action, climax, falling action, and resolution. Popular examples of literary fiction include, James Joyce’s novel A Portrait of an Artist as a Young Man, Charles Dickens’ A Tale of Two Cities, Jane Austen’s Pride and Prejudice, and harper lee’s To Kill a Mockingbird."
+    }
+Res:
+    {
+        "message": "Bingo! Genre sucessfully added",
+        "Result": {
+            "createdAt": "2021-02-08T18:59:18.513Z",
+            "_id": "60218aa3a621f3a5db37443b",
+            "genre_name": "Fiction",
+            "genre_description": "Fiction has three categories that are, realistic, non-realistic, and semi-fiction. Usually, fiction work is not real and therefore, authors can use complex figurative language to touch readers’ imaginations. Unlike poetry, it is more structured, follows proper grammatical pattern, and correct mechanics. A fictional work may incorporate fantastical and imaginary ideas from everyday life. It comprises some important elements such as plot, exposition, foreshadowing, rising action, climax, falling action, and resolution. Popular examples of literary fiction include, James Joyce’s novel A Portrait of an Artist as a Young Man, Charles Dickens’ A Tale of Two Cities, Jane Austen’s Pride and Prejudice, and harper lee’s To Kill a Mockingbird.",
+            "__v": 0
+        }
+    }
+
+validation 1 : not allowing to enetr same genre again and again
+Req:
+     {
+        "genre_name":"Fiction",
+        "genre_description":"Fiction has three categories that are, realistic, non-realistic, and semi-fiction. Usually, fiction work is not real and therefore, authors can use complex figurative language to touch readers’ imaginations. Unlike poetry, it is more structured, follows proper grammatical pattern, and correct mechanics. A fictional work may incorporate fantastical and imaginary ideas from everyday life. It comprises some important elements such as plot, exposition, foreshadowing, rising action, climax, falling action, and resolution. Popular examples of literary fiction include, James Joyce’s novel A Portrait of an Artist as a Young Man, Charles Dickens’ A Tale of Two Cities, Jane Austen’s Pride and Prejudice, and harper lee’s To Kill a Mockingbird."
+    }
+Res:
+    {
+        "message": "Hey! this genre is already added....you can update it :) "
+    }
+
+validation 2 : validating proper data
+Req:
+    {
+        "genre_name":"Fiction",
+        "genre_description":""
+    }
+Res: 
+    {
+        "errors": [
+            {
+                "value": "",
+                "msg": "it's mandatory",
+                "param": "genre_description",
+                "location": "body"
+            }
+        ]
+    }
+
+
+////////////////////////////////////////showing all list of movies////////////////////////////////////////////////////////////
+Endpoint: http://localhost:8082/show_all_genre
+method: get
+Req: --
+Res: {
+    "message": "Here is the list of all Genres - ",
+    "result": [
+        {
+            "createdAt": "2021-02-08T18:59:18.513Z",
+            "_id": "60218a09a621f3a5db37443a",
+            "genre_name": "drama",
+            "genre_description": "Drama is a form of text that is performed in front of an audience. It is also called a play. Its written text contains dialogues, and stage directions. This genre has further categories such as comedy, tragedy, and tragicomedy. William Shakespeare is known as the father of English drama. His well-known plays include Taming of the Shrew, Romeo & Juliet, and Hamlet. Greek playwrights were the pioneers in this field, such as Sophocles’ masterpiece Oedipus Rex, and Antigone, while modern dramas include Death of a Salesman, by Arthur Miller.",
+            "__v": 0
+        },
+        {
+            "createdAt": "2021-02-08T18:59:18.513Z",
+            "_id": "60218aa3a621f3a5db37443b",
+            "genre_name": "Fiction",
+            "genre_description": "Fiction has three categories that are, realistic, non-realistic, and semi-fiction. Usually, fiction work is not real and therefore, authors can use complex figurative language to touch readers’ imaginations. Unlike poetry, it is more structured, follows proper grammatical pattern, and correct mechanics. A fictional work may incorporate fantastical and imaginary ideas from everyday life. It comprises some important elements such as plot, exposition, foreshadowing, rising action, climax, falling action, and resolution. Popular examples of literary fiction include, James Joyce’s novel A Portrait of an Artist as a Young Man, Charles Dickens’ A Tale of Two Cities, Jane Austen’s Pride and Prejudice, and harper lee’s To Kill a Mockingbird.",
+            "__v": 0
+        }
+    ]
+}
+
+/////////////////////////////////////////////////////updating genre/////////////////////////////////////////////////////////////////////////////////
+Endpoint: http://localhost:8082/update_genre
+Method : post
+Req: 
+    {
+        "genre_to_be_updated":"Fiction",
+        "genre_description":"testing update"
+    }
+Res:
+    {
+        "message": "sucessfully updated",
+        "result": {
+            "createdAt": "2021-02-08T18:59:18.513Z",
+            "_id": "60218aa3a621f3a5db37443b",
+            "genre_name": "Fiction",
+            "genre_description": "testing update",
+            "__v": 0
+        }
+    }
+
+/////////////////////////////////////////////deleting genre////////////////////////////////////////////////////
+Endpoint: http://localhost:8082/remove_genre
+Method:Delete
+Req:
+    {
+        "genre_name":"Fiction"
+        
+    }
+Res:
+    {
+        "message": "1 document has been deleted"
+    }
+
+/////////////////////////////////////////adding movie////////////////////////////////////////////////////
+Endpoint: http://localhost:8082/add_movie
+Method: Post
+Req:
+    {
+        "movie_name":"arrival",
+        "movie_description":"A linguist works with the military to communicate with alien lifeforms after twelve mysterious spacecrafts appear around the world.",
+        "genre_name":"Drama",
+        "release_date":"2016-11-11",
+        "duration":"2 hours",
+        "rating":"4 stars"
+        
+    }
+Res:
+    {
+        "message": "movie sucessfully added",
+        "result": {
+            "createdAt": "2021-02-08T21:16:44.069Z",
+            "_id": "6021aa3e926536a27fc763de",
+            "movie_name": "arrival",
+            "movie_description": "A linguist works with the military to communicate with alien lifeforms after twelve mysterious spacecrafts appear around the world.",
+            "release_date": "2016-11-11T00:00:00.000Z",
+            "duration": "2 hours",
+            "rating": "4 stars",
+            "__v": 0
+        }
+    }
+
+validation 1 : not allowing to add same movie
+Req:
+        {
+            "movie_name":"arrival",
+            "movie_description":" lifeforms after twelve mysterious spacecrafts appear around the world.",
+            "genre_name":"Thrill",
+            "release_date":"2016-11-11",
+            "duration":"2 hours",
+            "rating":"4 stars"
+            
+        }
+Res:
+    {
+        "message": "Hey! seems you have already added this movie...please go to update option to change some details"
+    }
+
+validation 2 : not allowing to enter the movie which is not in genre list
+Req:
+    {
+        "movie_name":"highway",
+        "movie_description":"kidnappping of a rich girl makes her realise the meanong of independence and nature",
+        "genre_name":"Romantic",
+        "release_date":"2016-11-11",
+        "duration":"2 hours",
+        "rating":"4 stars"
+        
+    }
+Res:
+    {
+        "message": "Genre not found in your Genre list.....please add"
+    }
+
+validation 3 : validating proper data
+Req:
+    {
+        "movie_name":"",
+        "movie_description":"",
+        "genre_name":"Romantic",
+        "release_date":"2016-11-11",
+        "duration":"2 hours",
+        "rating":"4 stars"
+        
+    }
+REs:
+    {
+        "errors": [
+            {
+                "value": "",
+                "msg": "it's mandatory",
+                "param": "movie_name",
+                "location": "body"
+            },
+            {
+                "value": "",
+                "msg": "it's mandatory",
+                "param": "movie_description",
+                "location": "body"
+            }
+        ]
+    }
+
+/////////////////////////////////////showing list of all movies/////////////////////////////////////////////////
+Endpoint:http://localhost:8082/show_movies
+Method: Get
+Req:---
+Res:
+    {
+        "message": "your list of movies",
+        "result": [
+            {
+                "createdAt": "2021-02-08T21:16:44.069Z",
+                "_id": "6021aa3e926536a27fc763de",
+                "movie_name": "arrival",
+                "movie_description": "A linguist works with the military to communicate with alien lifeforms after twelve mysterious spacecrafts appear around the world.",
+                "release_date": "2016-11-11T00:00:00.000Z",
+                "duration": "2 hours",
+                "rating": "4 stars",
+                "__v": 0
+            },
+            {
+                "createdAt": "2021-02-08T21:16:44.069Z",
+                "_id": "6021acd3926536a27fc763df",
+                "movie_name": "sherlock homlmes",
+                "movie_description": "sherlock uses his brilliant intelligence to solve the best cases",
+                "release_date": "2016-11-11T00:00:00.000Z",
+                "duration": "2 hours",
+                "rating": "4 stars",
+                "__v": 0
+            }
+        ]
+    }
+
+//////////////////////////////////////////////updating movies_description//////////////////////////////////////////////////////////////////
+Endpoint: http://localhost:8082/update_movies?description=confirm
+Method: Post
+Req:
+    {
+        "movie_name":"sherlock homlmes",
+    "new_description":"testing update endpoint"
+    }
+Res:
+    {
+        "message": "description updated sucessfully ",
+        "result": {
+            "createdAt": "2021-02-08T21:16:44.069Z",
+            "_id": "6021acd3926536a27fc763df",
+            "movie_name": "sherlock homlmes",
+            "movie_description": "testing update endpoint",
+            "release_date": "2016-11-11T00:00:00.000Z",
+            "duration": "2 hours",
+            "rating": "4 stars",
+            "__v": 0
+        }
+    }
+
+//////////////////////////////updating release date///////////////////////////////////////////////////////////////////////////////////////////////////
+Endpoint:http://localhost:8082/update_movies?released_date=confirm
+Method:Post
+Req:
+    {
+        "movie_name":"sherlock homlmes",
+        "new_release_date":"2012-09-21"
+    }
+Res:
+    {
+        "message": "release date sucessfully updated ",
+        "result": {
+            "createdAt": "2021-02-08T21:16:44.069Z",
+            "_id": "6021acd3926536a27fc763df",
+            "movie_name": "sherlock homlmes",
+            "movie_description": "testing update endpoint",
+            "release_date": "2012-09-21",
+            "duration": "2 hours",
+            "rating": "4 stars",
+            "__v": 0
+        }
+    }
+
+validation ! : validating proper date format
+Req:
+    {
+        "movie_name":"sherlock homlmes",
+        "new_release_date":"2012-09-78"
+    }
+Res ;
+    {
+        "message": "invalid date"
+    }
+
+///////////////////////////////////updating genre////////////////////////////////////////////////////
+Endpoint: http://localhost:8082/update_movies?genre=confirm
+Method:Post
+Req:
+    {
+        "movie_name": "sherlock homlmes",
+        "genre": "drama"
+    }
+Res:
+    {
+        "message": "genre sucessfully upated ",
+        "result": {
+            "createdAt": "2021-02-08T21:16:44.069Z",
+            "_id": "6021acd3926536a27fc763df",
+            "movie_name": "sherlock homlmes",
+            "movie_description": "testing update endpoint",
+            "release_date": "2012-09-21",
+            "duration": "2 hours",
+            "rating": "4 stars",
+            "__v": 0,
+            "genre": "drama"
+        }
+
+/////////////////////////////////////////////updating movie duration///////////////////////////////////////
+Endpoint:http://localhost:8082/update_movies?duration=confirm
+Method:Post
+Req:
+    {
+        "movie_name": "sherlock homlmes",
+        "new_duration": "4 hours"
+    }
+Res:
+    {
+        "message": "duration sucessfully updated ",
+        "result": {
+            "createdAt": "2021-02-08T21:16:44.069Z",
+            "_id": "6021acd3926536a27fc763df",
+            "movie_name": "sherlock homlmes",
+            "movie_description": "testing update endpoint",
+            "release_date": "2012-09-21",
+            "duration": "4 hours",
+            "rating": "4 stars",
+            "__v": 0,
+            "genre": "drama"
+        }
+    }
+
+///////////////////////////////////////////updating rating of a movie/////////////////////////////////////////////////////
+Endpoint:http://localhost:8082/update_movies?rating=confirm
+Method:Post
+Req:
+    {
+        "movie_name": "sherlock homlmes",
+        "new_rating": "5 stars"
+    }
+Res:
+    {
+        "message": "rating sucessfully updated ",
+        "result": {
+            "createdAt": "2021-02-08T21:16:44.069Z",
+            "_id": "6021acd3926536a27fc763df",
+            "movie_name": "sherlock homlmes",
+            "movie_description": "testing update endpoint",
+            "release_date": "2012-09-21",
+            "duration": "4 hours",
+            "rating": "5 stars",
+            "__v": 0,
+            "genre": "drama"
+        }
+    }
+
+//////////////////////////////////////////removing undesired movie///////////////////////////////////////////////
+Endpoint: http://localhost:8082/delete_movie
+Method: delete
+Req:
+    {
+        "movie_to_be_deleted": "sherlock homlmes"
+    
+    }
+Res:
+    {
+        "message": "1 movie has been deleted"
+    }
+
