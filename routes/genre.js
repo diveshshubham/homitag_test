@@ -1,5 +1,5 @@
 const appRouter_genre = (app)=>{
-    const { check, validationResult } = require('express-validator/check'); // impoerting express validator
+    const { check, validationResult } = require('express-validator'); // impoerting express validator
     const Genre = require('../models/genres_schema');
 
 
